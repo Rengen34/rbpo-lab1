@@ -13,6 +13,8 @@
 
 Проверить можно в браузере: `http://localhost:8080/api/message` и `http://localhost:8080/api/numbers`.
 
+![Дракон думает о пончике](images/drakon-ponchik-23.png)
+
 ## Лабораторная работа 2: внутренние закупки
 
 По варианту 24 можно создавать, читать, менять и удалять пять видов записей:
@@ -54,11 +56,3 @@ java -version
 Во второй работе [ProcurementService](src/main/java/ru/rbpo/lab1/procurement/ProcurementService.java) содержит методы M-04–M-28: по пять для пользователей, заявок, поставщиков, предложений и заказов. Рядом лежат контроллеры, [модели и разбор JSON](src/main/java/ru/rbpo/lab1/procurement/ProcurementModels.java) (M2-INPUT), [хранилище](src/main/java/ru/rbpo/lab1/procurement/InMemoryProcurementRepository.java) (M2-STORE), [серверные часы](src/main/java/ru/rbpo/lab1/procurement/ProcurementClockConfiguration.java) (M2-TIME) и [обработка ошибок](src/main/java/ru/rbpo/lab1/procurement/ProcurementExceptionHandler.java) (M2-ERROR).
 
 Зависимости указаны в [pom.xml](pom.xml), номер билета — в [application.yml](src/main/resources/application.yml). Тесты находятся в [LabControllerTest](src/test/java/ru/rbpo/lab1/LabControllerTest.java) и [ProcurementApiTest](src/test/java/ru/rbpo/lab1/procurement/ProcurementApiTest.java).
-
-## Если менять проект
-
-Ответы первой работы находятся в `LabController`. После изменения кода запустите `.\mvnw.cmd test`. Для второй работы есть [подробная инструкция](docs/lab2-guide.md#разработчику-добавить-поле-заявки).
-
-## Ссылка на проект
-
-Код находится в [репозитории](https://github.com/Rengen34/rbpo-lab1). Эту ссылку можно вставить при сдаче работы в ЛМС.
