@@ -4,6 +4,8 @@
 
 Публичный репозиторий проекта: [Rengen34/rbpo-lab1](https://github.com/Rengen34/rbpo-lab1).
 
+Источник видимых требований: [раздел «Задание 1» в репозитории преподавателя](https://github.com/MatorinFedor/RBPO-ZIOVPO-2026#задание-1-подготовка-репозитория) и связанный с ним `files/zadanie1.pdf`. Скачанный оттуда PDF побайтово совпадает с полученным для работы файлом (SHA-256 `638A5BDB76A39E8D02CA06ED8262850404F4A8470E6B9D0D6D3EFDD0B51B1FF4`). Раздел «Задание 2» относится к другой работе.
+
 ## Быстрый маршрут по проекту
 
 За 30–60 минут начните с [pom.xml](pom.xml) (версия Java и зависимости), затем откройте [LabApplication.main](src/main/java/ru/rbpo/lab1/LabApplication.java) (точка входа), [LabController.message и LabController.numbers](src/main/java/ru/rbpo/lab1/LabController.java) (правила ответов), [application.yml](src/main/resources/application.yml) (номер билета) и [LabControllerTest](src/test/java/ru/rbpo/lab1/LabControllerTest.java) (проверки запросов). Команды запуска и диагностика находятся ниже. Это авторский маршрут чтения; независимый новичок пока не проверял, укладывается ли он в 30–60 минут.
