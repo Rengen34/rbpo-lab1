@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- pom.xml: Назначение — собрать и проверить учебное Spring Boot приложение. -->
+<!-- pom.xml: Реестр методов — LabApplication.main, LabController.message, LabController.numbers; формул нет. -->
+<!-- pom.xml: Зависимости — Spring Boot Web/Jetty для HTTP и Spring Boot Test для проверок. -->
+<!-- pom.xml: Вход — исходники Java и application.yml; выход — jar и результаты Maven test. -->
+<!-- pom.xml: Побочные эффекты — Maven скачивает зависимости в локальный кэш и создаёт target/. -->
+<!-- pom.xml: Диагностика — смотреть сообщения Maven и отчёты target/surefire-reports/. -->
+<!-- pom.xml: Тесты — LabControllerTest; связи с методами и расширением описаны в README.md. -->
+<!-- pom.xml: Корневой Maven-модуль содержит координаты и зависимости проекта. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- pom.xml: Используем актуальную ветку Spring Boot 3.5, превышающую минимум задания. -->
+    <modelVersion>4.0.0</modelVersion>
+    <!-- pom.xml: Родитель управляет совместимыми версиями зависимостей и плагинов. -->
+    <parent>
+        <!-- pom.xml: Группа официального родительского POM Spring Boot. -->
+        <groupId>org.springframework.boot</groupId>
+        <!-- pom.xml: Идентификатор родительского POM. -->
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <!-- pom.xml: Версия Spring Boot с поддержкой Java 25 для локальной проверки. -->
+        <version>3.5.16</version>
+        <!-- pom.xml: Не искать родительский POM в соседнем каталоге. -->
+        <relativePath/>
+        <!-- pom.xml: Завершён контракт наследования версий Spring Boot. -->
+    </parent>
+    <!-- pom.xml: Учебная группа артефактов. -->
+    <groupId>ru.rbpo</groupId>
+    <!-- pom.xml: Стабильное имя артефакта лабораторной работы. -->
+    <artifactId>lab1</artifactId>
+    <!-- pom.xml: Первая версия проекта без обратной совместимости. -->
+    <version>1.0.0</version>
+    <!-- pom.xml: Читаемое имя сборки. -->
+    <name>rbpo-lab1</name>
+    <!-- pom.xml: Кратко фиксируем назначение опубликованного артефакта. -->
+    <description>Учебное REST-приложение для лабораторной работы 1</description>
+    <!-- pom.xml: Свойства управляют целевой версией байткода. -->
+    <properties>
+        <!-- pom.xml: Java 17 — минимальная версия, поддерживаемая Spring Boot 3.5. -->
+        <java.version>17</java.version>
+        <!-- pom.xml: Jackson 2.21.5 устраняет обход ограничений при десериализации. -->
+        <jackson-bom.version>2.21.5</jackson-bom.version>
+        <!-- pom.xml: Log4j 2.25.5 исправляет формирование JSON для MapMessage. -->
+        <log4j2.version>2.25.5</log4j2.version>
+        <!-- pom.xml: Исходники и ресурсы проекта используют UTF-8. -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- pom.xml: Завершён перечень свойств сборки. -->
+    </properties>
+    <!-- pom.xml: Приложению нужны только веб-слой и тестовый набор. -->
+    <dependencies>
+        <!-- pom.xml: Web starter включает Spring MVC и JSON; сервер выбирается ниже. -->
+        <dependency>
+            <!-- pom.xml: Группа веб-зависимости Spring Boot. -->
+            <groupId>org.springframework.boot</groupId>
+            <!-- pom.xml: Веб-зависимость без явно заданной версии благодаря parent. -->
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- pom.xml: Исключаем уязвимый встроенный Tomcat из стандартного набора. -->
+            <exclusions>
+                <!-- pom.xml: Jetty будет единственным встроенным HTTP-сервером. -->
+                <exclusion>
+                    <!-- pom.xml: Группа стандартного сервера Spring Boot. -->
+                    <groupId>org.springframework.boot</groupId>
+                    <!-- pom.xml: Исключаем только сервер, сохраняя Spring MVC и JSON. -->
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <!-- pom.xml: Завершено исключение Tomcat. -->
+                </exclusion>
+                <!-- pom.xml: Другие зависимости Web starter сохраняются. -->
+            </exclusions>
+            <!-- pom.xml: Завершена производственная веб-зависимость. -->
+        </dependency>
+        <!-- pom.xml: Поддерживаемый Spring Boot Jetty обслуживает HTTP-запросы. -->
+        <dependency>
+            <!-- pom.xml: Группа стартового набора Jetty. -->
+            <groupId>org.springframework.boot</groupId>
+            <!-- pom.xml: Версию Jetty согласует родительский POM Spring Boot. -->
+            <artifactId>spring-boot-starter-jetty</artifactId>
+            <!-- pom.xml: Завершена зависимость встроенного сервера. -->
+        </dependency>
+        <!-- pom.xml: Test starter предоставляет JUnit и MockMvc для проверок API. -->
+        <dependency>
+            <!-- pom.xml: Группа тестовой зависимости Spring Boot. -->
+            <groupId>org.springframework.boot</groupId>
+            <!-- pom.xml: Тестовая зависимость берёт согласованную версию из parent. -->
+            <artifactId>spring-boot-starter-test</artifactId>
+            <!-- pom.xml: Тестовые библиотеки не входят в рабочий jar. -->
+            <scope>test</scope>
+            <!-- pom.xml: Завершена зависимость проверок. -->
+        </dependency>
+        <!-- pom.xml: Другие библиотеки для статических ответов не нужны. -->
+    </dependencies>
+    <!-- pom.xml: Плагин Spring Boot упаковывает запускаемый jar. -->
+    <build>
+        <!-- pom.xml: Перечень плагинов этой сборки. -->
+        <plugins>
+            <!-- pom.xml: Плагин создаёт исполняемый jar с зависимостями. -->
+            <plugin>
+                <!-- pom.xml: Группа официального плагина Spring Boot. -->
+                <groupId>org.springframework.boot</groupId>
+                <!-- pom.xml: Идентификатор плагина упаковки. -->
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- pom.xml: Завершено описание плагина. -->
+            </plugin>
+            <!-- pom.xml: Других плагинов приложению не требуется. -->
+        </plugins>
+        <!-- pom.xml: Завершена конфигурация сборки. -->
+    </build>
+    <!-- pom.xml: Завершён единственный Maven-модуль. -->
+</project>
