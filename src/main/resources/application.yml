@@ -1,9 +1,5 @@
 spring:
   application:
     name: "1БКС24106"
-  jackson:
-    deserialization:
-      fail-on-unknown-properties: true
-      use-big-decimal-for-floats: true
 server:
   address: 127.0.0.1
