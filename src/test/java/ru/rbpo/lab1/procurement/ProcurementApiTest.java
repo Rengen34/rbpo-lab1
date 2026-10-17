@@ -9,7 +9,7 @@
  * Выход: проверки статусов, тел, ссылок и времени серверных записей.
  * Побочные эффекты: записи создаются только в памяти тестового приложения.
  * Диагностика: отчёт Maven находится в target/surefire-reports/.
- * Связи: docs/spec-v2.md, L2-01–L2-06 и реестр методов README.md.
+ * Связи: docs/lab2-guide.md и реестр методов README.md.
  */
 // ProcurementApiTest: пакет соответствует расположению подсистемы закупок.
 package ru.rbpo.lab1.procurement;
@@ -90,7 +90,7 @@ class ProcurementApiTest {
      * Параметры: нет; суммы — учебные денежные единицы, сроки — дни.
      * @return ничего; нарушение HTTP-контракта вызывает AssertionError.
      * @throws Exception если тестовый HTTP-запрос или чтение JSON не удались.
-     * Формулы: нет; docs/spec-v2.md, L2-01, L2-02, L2-04.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.completeResourceLifecycle: запускаем полную цепочку закупки.
     @Test
@@ -199,7 +199,7 @@ class ProcurementApiTest {
      * Параметры: нет; единицы измерения не применяются.
      * @return ничего; неверный статус или тело вызывает AssertionError.
      * @throws Exception если тестовый HTTP-запрос не удался.
-     * Формулы: нет; docs/spec-v2.md, L2-04.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.rejectsInvalidAndServerOwnedFields: запускаем сценарий валидации.
     @Test
@@ -237,7 +237,7 @@ class ProcurementApiTest {
      * Параметры: нет; идентификаторы — положительные числа без единиц.
      * @return ничего; неверный статус вызывает AssertionError.
      * @throws Exception если тестовый HTTP-запрос не удался.
-     * Формулы: нет; docs/spec-v2.md, L2-01 и L2-03.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.missingRecordsAndReferencesReturnNotFound: запускаем проверки 404.
     @Test
@@ -259,7 +259,7 @@ class ProcurementApiTest {
      * Параметры: нет; сумма — учебные денежные единицы.
      * @return ничего; изменение сохранённой записи вызывает AssertionError.
      * @throws Exception если тестовый HTTP-запрос не удался.
-     * Формулы: нет; docs/spec-v2.md, L2-03.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.failedPatchPreservesRecord: запускаем проверки целостности PATCH.
     @Test
@@ -287,7 +287,7 @@ class ProcurementApiTest {
      * Параметры: нет; цена — учебные денежные единицы, сроки — дни.
      * @return ничего; неверные статусы или изменение связей вызывают AssertionError.
      * @throws Exception если тестовый HTTP-запрос не удался.
-     * Формулы: нет; docs/spec-v2.md, L2-03.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.incompatibleOffersAndLinkedDeletesPreserveGraph: запускаем сценарий 409.
     @Test
@@ -336,7 +336,7 @@ class ProcurementApiTest {
      * @param json тело запроса JSON; единицы задаются полями контракта.
      * @return тело ответа 201 как независимое дерево JSON.
      * @throws Exception если запрос не выполнен или ответ нарушил JSON-контракт.
-     * Формулы: нет; docs/spec-v2.md, L2-02 и L2-04.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.create: вспомогательный метод вызывает только HTTP.
     private JsonNode create(String resource, String json) throws Exception {
@@ -368,7 +368,7 @@ class ProcurementApiTest {
      * @param json тело изменения JSON; единицы задаются полями контракта.
      * @return тело ответа 200 как независимое дерево JSON.
      * @throws Exception если запрос не выполнен или ответ нарушил контракт.
-     * Формулы: нет; docs/spec-v2.md, L2-02 и L2-04.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.patchRecord: вспомогательный метод вызывает HTTP PATCH.
     private JsonNode patchRecord(String resource, long id, String json) throws Exception {
@@ -395,7 +395,7 @@ class ProcurementApiTest {
      * @param id числовой идентификатор записи; без единиц измерения.
      * @return тело ответа 200 как независимое дерево JSON.
      * @throws Exception если запрос не выполнен или ответ нарушил контракт.
-     * Формулы: нет; docs/spec-v2.md, L2-01 и L2-02.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.read: вспомогательный метод вызывает HTTP GET элемента.
     private JsonNode read(String resource, long id) throws Exception {
@@ -417,7 +417,7 @@ class ProcurementApiTest {
      * @param resource имя ресурса в URL; без единиц измерения.
      * @return массив ответа 200 как дерево JSON.
      * @throws Exception если запрос не выполнен или ответ нарушил контракт.
-     * Формулы: нет; docs/spec-v2.md, L2-01 и L2-02.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.list: вспомогательный метод вызывает HTTP GET списка.
     private JsonNode list(String resource) throws Exception {
@@ -439,7 +439,7 @@ class ProcurementApiTest {
      * @param request HTTP-запрос с заведомо неверным телом; без единиц измерения.
      * @return ничего; нарушение статуса или тела вызывает AssertionError.
      * @throws Exception если тестовый HTTP-запрос не выполнен.
-     * Формулы: нет; docs/spec-v2.md, L2-03 и L2-04.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.expectInvalid: проверяем публичный код ошибки валидации.
     private void expectInvalid(MockHttpServletRequestBuilder request) throws Exception {
@@ -459,7 +459,7 @@ class ProcurementApiTest {
      * @param request HTTP-запрос к отсутствующему объекту; без единиц измерения.
      * @return ничего; нарушение статуса или тела вызывает AssertionError.
      * @throws Exception если тестовый HTTP-запрос не выполнен.
-     * Формулы: нет; docs/spec-v2.md, L2-03.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.expectNotFound: проверяем публичный код отсутствия.
     private void expectNotFound(MockHttpServletRequestBuilder request) throws Exception {
@@ -479,7 +479,7 @@ class ProcurementApiTest {
      * @param request HTTP-запрос, нарушающий связь; без единиц измерения.
      * @return ничего; нарушение статуса или тела вызывает AssertionError.
      * @throws Exception если тестовый HTTP-запрос не выполнен.
-     * Формулы: нет; docs/spec-v2.md, L2-03.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.expectConflict: проверяем публичный код конфликта.
     private void expectConflict(MockHttpServletRequestBuilder request) throws Exception {
@@ -500,7 +500,7 @@ class ProcurementApiTest {
      * @param id числовой идентификатор записи; без единиц измерения.
      * @return ничего; сохранённая запись или непустой ответ вызывает AssertionError.
      * @throws Exception если тестовый HTTP-запрос не выполнен.
-     * Формулы: нет; docs/spec-v2.md, L2-01 и L2-02.
+     * Формулы: нет; docs/lab2-guide.md.
      */
     // ProcurementApiTest.assertDeleted: проверяем полный внешний эффект удаления.
     private void assertDeleted(String resource, long id) throws Exception {
@@ -524,7 +524,7 @@ class ProcurementApiTest {
          * Параметры: нет; время задано в UTC.
          * @return Clock с датой 2026-09-19T12:34:56Z.
          * @throws RuntimeException только при неверной константе времени теста.
-         * Формулы: нет; docs/spec-v2.md, L2-04.
+         * Формулы: нет; docs/lab2-guide.md.
          */
         // ProcurementApiTest.fixedClock: публикуем часы в тестовом контексте.
         @Bean

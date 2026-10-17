@@ -4,7 +4,7 @@
  * Зависимости: java.time.Clock и контейнер Spring.
  * Вход: запуск приложения; выход: внедряемый объект Clock.
  * Побочный эффект: регистрация одного Spring bean.
- * Диагностика: тесты времени и журнал запуска; docs/spec-v2.md, L2-04, README.md.
+ * Диагностика: тесты времени и журнал запуска; docs/lab2-guide.md, README.md.
  */
 // ProcurementClockConfiguration: часы размещены рядом с правилами закупок.
 package ru.rbpo.lab1.procurement;

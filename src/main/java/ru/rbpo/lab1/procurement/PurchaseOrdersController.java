@@ -6,7 +6,7 @@
  * Выход: JSON для чтения/записи; 201 при создании и 204 при удалении.
  * Побочные эффекты: передаёт создание, изменение и удаление сервису.
  * Диагностика: ошибки входа и связей формируются сервисом и обработчиком ошибок.
- * Проверка: HTTP-тесты маршрутов по спецификации docs/spec-v2.md.
+ * Проверка: HTTP-тесты маршрутов по правилам из docs/lab2-guide.md.
  * Реестр: README.md, раздел методов закупок; формул нет.
  */
 // PurchaseOrdersController: пакет объединяет HTTP-контракт закупок.
@@ -66,7 +66,7 @@ public class PurchaseOrdersController {
      * Параметры: нет; единицы измерения не применяются.
      * @return JSON-массив записей, включая пустой массив.
      * @throws RuntimeException если сервис не смог выполнить чтение.
-     * Формулы: нет; спецификация L2-01 и L2-02.
+     * Формулы: нет; правила HTTP-ответов из docs/lab2-guide.md.
      */
     // PurchaseOrdersController.list: GET без id перечисляет весь ресурс.
     @GetMapping
@@ -82,7 +82,7 @@ public class PurchaseOrdersController {
      * @param id идентификатор записи, без единиц измерения.
      * @return JSON-объект найденной записи.
      * @throws RuntimeException если запись отсутствует или чтение не удалось.
-     * Формулы: нет; спецификация L2-01 и L2-02.
+     * Формулы: нет; правила HTTP-ответов из docs/lab2-guide.md.
      */
     // PurchaseOrdersController.get: GET с id читает одну запись.
     @GetMapping("/{id}")
@@ -98,7 +98,7 @@ public class PurchaseOrdersController {
      * @param input поля JSON-запроса; денежные величины и сроки, если есть, проверяет сервис.
      * @return созданная запись с серверными id и временем.
      * @throws RuntimeException если входные данные или ссылки недопустимы.
-     * Формулы: нет; спецификация L2-01 и L2-02.
+     * Формулы: нет; правила HTTP-ответов из docs/lab2-guide.md.
      */
     // PurchaseOrdersController.create: POST создаёт новую запись.
     @PostMapping
@@ -117,7 +117,7 @@ public class PurchaseOrdersController {
      * @param input изменяемые поля JSON; отсутствующие поля остаются прежними.
      * @return обновлённая запись с серверным временем изменения.
      * @throws RuntimeException если запись, данные или ссылки недопустимы.
-     * Формулы: нет; спецификация L2-01 и L2-02.
+     * Формулы: нет; правила HTTP-ответов из docs/lab2-guide.md.
      */
     // PurchaseOrdersController.update: PATCH с id обновляет только переданные поля.
     @PatchMapping("/{id}")
@@ -133,7 +133,7 @@ public class PurchaseOrdersController {
      * @param id идентификатор записи, без единиц измерения.
      * @return ничего; успешный HTTP-ответ имеет пустое тело.
      * @throws RuntimeException если запись отсутствует или имеет зависимости.
-     * Формулы: нет; спецификация L2-01, L2-02 и L2-03.
+     * Формулы: нет; правила удаления из docs/lab2-guide.md.
      */
     // PurchaseOrdersController.delete: DELETE с id просит сервис удалить запись.
     @DeleteMapping("/{id}")
